@@ -32,6 +32,10 @@ GlobalReachPartners.configure do |config|
 end
 ```
 
+Get currencies:
+```ruby
+GlobalReachPartners.get_currencies # Returns array of GlobalReachPartners::Currency instances
+```
 
 ## Contributing
 

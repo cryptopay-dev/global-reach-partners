@@ -1,5 +1,5 @@
 module GlobalReachPartners
-  class << self
+  module Operations
     def get_rate(sell_currency:, buy_currency:, amount: 1)
       message = {}
       message['objRate'] = {
@@ -15,7 +15,15 @@ module GlobalReachPartners
     def get_currencies
       message = { error_msg: '' }
 
-      Request.new(:get_rate).call(message)
+      request = Request.new(:get_currencies).call(message)
+      currencies = request.body.dig(:get_currencies_response, :get_currencies_result, :diffgram, :new_data_set, :tbl)
+      begin
+        currencies.map do |currency|
+          Currency.new(currency)
+        end
+      rescue
+        return []
+      end
     end
 
     def trade_currency(type:, sell_currency:, buy_currency:)

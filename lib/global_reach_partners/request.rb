@@ -12,9 +12,11 @@ module GlobalReachPartners
     end
 
     def call(operation_message)
+      full_message = operation_message.merge(authentication)
+
       client.call(operation) do
         attributes(xmlns: 'http://tempuri.org/')
-        message(operation_message.merge(authentication))
+        message(full_message)
       end
     end
 

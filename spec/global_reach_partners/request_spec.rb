@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe GlobalReachPartners::Request do
-  subject { described_class.new(:operation) }
+  let(:operation) { :operation }
+  subject { described_class.new(operation) }
 
   describe '#authentication' do
     it 'returns configuration hash' do
@@ -13,6 +14,15 @@ RSpec.describe GlobalReachPartners::Request do
   describe '#client' do
     it 'returns savon client' do
       expect(subject.client).to be_kind_of(Savon::Client)
+    end
+  end
+
+  describe '#call' do
+    let(:operation) { :get_currencies }
+    let(:message) { { error_msg: '' } }
+
+    it 'returns savon client', vcr: { cassette_name: 'operations/get_currencies' } do
+      expect(subject.call(message)).to be_kind_of(Savon::Response)
     end
   end
 end

@@ -12,4 +12,5 @@ end
 group :test do
   gem 'dotenv'
   gem 'vcr'
+  gem 'webmock'
 end

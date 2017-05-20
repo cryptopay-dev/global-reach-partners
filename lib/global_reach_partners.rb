@@ -3,11 +3,13 @@ require 'active_support/core_ext/module/delegation'
 require 'active_support/core_ext/object'
 require 'savon'
 
-module GlobalReachPartners
-  extend ActiveSupport::Autoload
+require 'global_reach_partners/configuration'
+require 'global_reach_partners/currency'
+require 'global_reach_partners/request'
+require 'global_reach_partners/operations'
 
-  autoload(:Configuration)
-  autoload(:Request)
+module GlobalReachPartners
+  extend Operations
 
   class << self
     attr :configuration, :client
