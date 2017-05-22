@@ -6,6 +6,7 @@ require 'savon'
 require 'global_reach_partners/configuration'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
+require 'global_reach_partners/rate'
 require 'global_reach_partners/operations'
 
 module GlobalReachPartners

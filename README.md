@@ -32,9 +32,16 @@ GlobalReachPartners.configure do |config|
 end
 ```
 
-Get currencies:
+### Methods
+
+-  Get currencies:
 ```ruby
 GlobalReachPartners.get_currencies # Returns array of GlobalReachPartners::Currency instances
+```
+
+- Get rate:
+```ruby
+GlobalReachPartners.get_rate(sell_currency: 'USD', buy_currency: 'EUR', amount: 1) # Returns the Rate instance
 ```
 
 ## Contributing

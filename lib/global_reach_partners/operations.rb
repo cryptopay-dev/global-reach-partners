@@ -1,15 +1,10 @@
 module GlobalReachPartners
   module Operations
-    def get_rate(sell_currency:, buy_currency:, amount: 1)
-      message = {}
-      message['objRate'] = {
-        buy_amount: amount,
-        sell_curr: sell_currency,
-        buy_curr: buy_currency,
-        value_date: Time.current.utc.iso8601
-      }
-
-      Request.new(:get_rate).call(message)
+    # Attributes: :sell_currency: :buy_currency: :amount
+    def get_rate(**attrs)
+      rate = Rate.new(attrs)
+      rate.fetch
+      rate
     end
 
     def get_currencies
