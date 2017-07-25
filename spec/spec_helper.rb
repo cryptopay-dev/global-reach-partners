@@ -29,18 +29,20 @@ end
 
 RSpec.configure do |config|
   config.example_status_persistence_file_path = '.rspec_status'
+  config.filter_run :focus
+  config.run_all_when_everything_filtered = true
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
 
-  config.before(:each) do
+  config.before(:suite) do
     GlobalReachPartners.configure do |config|
       config.url = ENV['GRP_URL']
       config.client_code = ENV['GRP_CLIENT_CODE']
       config.username = ENV['GRP_USERNAME']
       config.password = ENV['GRP_PASSWORD']
-      config.debug = true
+      config.debug = ENV['GRP_DEBUG'] == 'true'
     end
   end
 end
