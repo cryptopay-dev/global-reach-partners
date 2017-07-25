@@ -1,0 +1,791 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://portal-uat.globalreach-partners.com/TradeService.asmx?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 May 2017 12:24:34 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '5424'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=db67f795d9f2be3c12a076dcf3c03506c1495628674; expires=Thu, 24-May-18
+        12:24:34 GMT; path=/; domain=.globalreach-partners.com; HttpOnly
+      Cf-Rate-Limit-Rule-Id:
+      - ce780ac67477426eb0b7e2c1a2d7fdce
+      Cf-Rate-Limit-Action:
+      - simulate
+      Retry-After:
+      - '2008'
+      Cache-Control:
+      - private, max-age=0
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 36403b8fe94b266c-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\"
+        xmlns:tns=\"http://tempuri.org/\" xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+        xmlns:s=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\"
+        xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\" targetNamespace=\"http://tempuri.org/\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"http://tempuri.org/\">\r\n
+        \     <s:element name=\"DoSingleTrade\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ClientLogin\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"UserName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"objSingleTrade\" type=\"tns:clsTradeMain\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TradeType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"singletradeormultipletrade\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"clsTradeMain\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BenName\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PayeeAcIBAN\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"PaymentCurr\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"PaymentAmount\" type=\"s:decimal\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentType\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentNotes\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankName\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankAddress1\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BankAddress2\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankCity\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankState\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankZip\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankCountry\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BankSwiftCode\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankSortCode\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankRoutingCode\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"IMBankName\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankAddress1\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankAddress2\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"IMBankCity\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"IMBankState\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankZip\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankCountry\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"IMBankSwift\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"IMBankAcNo\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"NewPayeeName\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ValueDate\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TempValueDate\"
+        type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SellCurrency\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"SellCurrencyID\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"BuyCurrencyID\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TradeType\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"NoOfBACS\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"NoOfCHAPS\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BrokerBooked\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"OPICategories\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BeneficiaryAdd1\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BeneficiaryAdd2\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BeneficiaryAdd3\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Paymentcategory\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"DivisionName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BenificiaryNationality\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"vcCompRef\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ByOrderOff\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TradeRef\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"DoSingleTradeResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"DoSingleTradeResult\" type=\"tns:clsTradeException\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"clsTradeException\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TradeID\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ErrorCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMessage\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SuccessMessage\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"OutPutDataTable\">\r\n            <s:complexType>\r\n              <s:sequence>\r\n
+        \               <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n              </s:sequence>\r\n            </s:complexType>\r\n
+        \         </s:element>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ExchangeRate\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConvertAmount\" type=\"s:string\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"DoMultileTrade\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"objMultipeTradeArray\"
+        type=\"tns:ArrayOfClsTradeMain\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"TradeType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"singletradeormultipletrade\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"dtOutput\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"ArrayOfClsTradeMain\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"clsTradeMain\" nillable=\"true\" type=\"tns:clsTradeMain\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"DoMultileTradeResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoMultileTradeResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"dtOutput\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"ArrayOfClsTradeException\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"clsTradeException\" nillable=\"true\" type=\"tns:clsTradeException\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:element
+        name=\"DoTradeForPaymentUpload\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ClientLogin\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"UserName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"dtInput\">\r\n              <s:complexType>\r\n
+        \               <s:sequence>\r\n                  <s:any minOccurs=\"0\" maxOccurs=\"unbounded\"
+        namespace=\"http://www.w3.org/2001/XMLSchema\" processContents=\"lax\" />\r\n
+        \                 <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"TradeType\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"singletradeormultipletrade\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoTradeForPaymentUploadResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoTradeForPaymentUploadResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"dtOutput\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoTradeForPaymentUpload_XMLString\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ClientLogin\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"UserName\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GroupID\" type=\"s:int\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"dtInput_XMLString\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TradeType\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"singletradeormultipletrade\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"dtOutput_XMLString\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"DoTradeForPaymentUpload_XMLStringResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoTradeForPaymentUpload_XMLStringResult\"
+        type=\"tns:ArrayOfClsTradeException\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput_XMLString\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DoExportYourPayment\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"fromDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ToDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"dtOutput\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportYourPaymentResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoExportYourPaymentResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportCreditDebit\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"fromDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ToDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"dtOutput\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportCreditDebitResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoExportCreditDebitResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportAccountStatement\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ClientLogin\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"UserName\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GroupID\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"fromDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ToDate\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportAccountStatementResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoExportAccountStatementResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportYourBalance\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DoExportYourBalanceResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DoExportYourBalanceResult\" type=\"tns:ArrayOfClsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"dtOutput\">\r\n
+        \             <s:complexType>\r\n                <s:sequence>\r\n                  <s:any
+        minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"CheckDealNoStatus\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"DealNo\"
+        type=\"s:int\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"CheckDealNoStatusResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CheckDealNoStatusResult\">\r\n              <s:complexType>\r\n
+        \               <s:sequence>\r\n                  <s:any minOccurs=\"0\" maxOccurs=\"unbounded\"
+        namespace=\"http://www.w3.org/2001/XMLSchema\" processContents=\"lax\" />\r\n
+        \                 <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"BuySellCurrency\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"objTradeParam\"
+        type=\"tns:ArrayOfClsBuySellCurrency\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"ArrayOfClsBuySellCurrency\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"clsBuySellCurrency\" nillable=\"true\" type=\"tns:clsBuySellCurrency\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"clsBuySellCurrency\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TradeType\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SettlementDate\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"IsDirectDebit\" type=\"s:boolean\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BuyingOrSelling\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SellCurrency\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SellCurrencyCountry\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BuyCurrency\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BuyCurrencyCountry\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NoOfChaps\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NoOfBacs\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"BankID\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentSending\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Paymentcategory\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FXRateMatrixGuid\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"TradeRef\" type=\"s:string\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"BuySellCurrencyResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BuySellCurrencyResult\" type=\"tns:clsTradeException\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"CreatePayment\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"objCreatePaymentGeneralParameters\"
+        type=\"tns:clsCreatePaymentGeneralParameters\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"objclsCreatePayment_para\" type=\"tns:ArrayOfClsCreatePayment_para\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"clsCreatePaymentGeneralParameters\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"NoOfCHAPS\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"NoOfBACS\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"PaymentMode\" type=\"tns:PaymentTypes\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CurrencyBalance\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"cboPaymentCurrency\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:simpleType name=\"PaymentTypes\">\r\n        <s:restriction base=\"s:string\">\r\n
+        \         <s:enumeration value=\"CreditDebitCard\" />\r\n          <s:enumeration
+        value=\"FundsOnAccount\" />\r\n          <s:enumeration value=\"AlreadyPaid\"
+        />\r\n        </s:restriction>\r\n      </s:simpleType>\r\n      <s:complexType
+        name=\"ArrayOfClsCreatePayment_para\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"clsCreatePayment_para\" nillable=\"true\"
+        type=\"tns:clsCreatePayment_para\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"clsCreatePayment_para\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"objException\"
+        type=\"tns:clsTradeException\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"OPIID\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BenName\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PayeeAcIBAN\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentCurr\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"PaymentAmount\" type=\"s:double\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"PaymentType\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentNotes\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentNotes2\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankName\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankAddress1kName\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Bankcity\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankAddress2\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankState\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankZip\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BankCountry\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankRef\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BankSwiftCode\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankSortCode\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankRoutingCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankName\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankAddress1\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"IMBankAddress2\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"IMBankCity\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankState\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankZip\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IMBankCountry\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"IMBankSwift\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"IMBankAcNo\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NewPayeeflag\" type=\"tns:BeneficiaryDetail\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"NewPayeeName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Selected\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"OPICategories\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BeneficiaryAdd1\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BeneficiaryAdd2\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BeneficiaryAdd3\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BeneficiaryNationality\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"BeneficiaryNationalityID\" type=\"s:int\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:simpleType
+        name=\"BeneficiaryDetail\">\r\n        <s:restriction base=\"s:string\">\r\n
+        \         <s:enumeration value=\"NewPayee\" />\r\n          <s:enumeration
+        value=\"updatePayee\" />\r\n          <s:enumeration value=\"existing\" />\r\n
+        \       </s:restriction>\r\n      </s:simpleType>\r\n      <s:element name=\"CreatePaymentResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CreatePaymentResult\" type=\"tns:clsTradeException\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"Get_Currencies\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ClientLogin\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"UserName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorMsg\" type=\"s:string\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"Get_CurrenciesResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Get_CurrenciesResult\">\r\n              <s:complexType>\r\n                <s:sequence>\r\n
+        \                 <s:any minOccurs=\"0\" maxOccurs=\"unbounded\" namespace=\"http://www.w3.org/2001/XMLSchema\"
+        processContents=\"lax\" />\r\n                  <s:any minOccurs=\"1\" namespace=\"urn:schemas-microsoft-com:xml-diffgram-v1\"
+        processContents=\"lax\" />\r\n                </s:sequence>\r\n              </s:complexType>\r\n
+        \           </s:element>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ErrorMsg\" type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"Get_Rate\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ClientLogin\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"UserName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Password\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GroupID\" type=\"s:int\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"objRate\"
+        type=\"tns:clsRateMain\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"clsRateMain\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BuyAmount\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SellCurr\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BuyCurr\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"ValueDate\" type=\"s:dateTime\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"Get_RateResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Get_RateResult\" type=\"tns:GetRateForService\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"GetRateForService\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ExchangeRate\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConvertAmount\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ErrorMessage\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ValueDate\" type=\"s:string\" />\r\n
+        \       </s:sequence>\r\n      </s:complexType>\r\n    </s:schema>\r\n  </wsdl:types>\r\n
+        \ <wsdl:message name=\"DoSingleTradeSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DoSingleTrade\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoSingleTradeSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoSingleTradeResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DoMultileTradeSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:DoMultileTrade\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"DoMultileTradeSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DoMultileTradeResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"DoTradeForPaymentUploadSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DoTradeForPaymentUpload\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"DoTradeForPaymentUploadSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DoTradeForPaymentUploadResponse\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"DoTradeForPaymentUpload_XMLStringSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:DoTradeForPaymentUpload_XMLString\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DoTradeForPaymentUpload_XMLStringSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoTradeForPaymentUpload_XMLStringResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoExportYourPaymentSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportYourPayment\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DoExportYourPaymentSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportYourPaymentResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoExportCreditDebitSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportCreditDebit\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DoExportCreditDebitSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportCreditDebitResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoExportAccountStatementSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportAccountStatement\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoExportAccountStatementSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportAccountStatementResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DoExportYourBalanceSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportYourBalance\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DoExportYourBalanceSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DoExportYourBalanceResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CheckDealNoStatusSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckDealNoStatus\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CheckDealNoStatusSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckDealNoStatusResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"BuySellCurrencySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:BuySellCurrency\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"BuySellCurrencySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:BuySellCurrencyResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CreatePaymentSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CreatePayment\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"CreatePaymentSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:CreatePaymentResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"Get_CurrenciesSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:Get_Currencies\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"Get_CurrenciesSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:Get_CurrenciesResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"Get_RateSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:Get_Rate\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"Get_RateSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:Get_RateResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:portType name=\"TradeServiceSoap\">\r\n
+        \   <wsdl:operation name=\"DoSingleTrade\">\r\n      <wsdl:input message=\"tns:DoSingleTradeSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DoSingleTradeSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DoMultileTrade\">\r\n      <wsdl:input message=\"tns:DoMultileTradeSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DoMultileTradeSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DoTradeForPaymentUpload\">\r\n      <wsdl:input
+        message=\"tns:DoTradeForPaymentUploadSoapIn\" />\r\n      <wsdl:output message=\"tns:DoTradeForPaymentUploadSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"DoTradeForPaymentUpload_XMLString\">\r\n
+        \     <wsdl:input message=\"tns:DoTradeForPaymentUpload_XMLStringSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DoTradeForPaymentUpload_XMLStringSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"DoExportYourPayment\">\r\n
+        \     <wsdl:input message=\"tns:DoExportYourPaymentSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:DoExportYourPaymentSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DoExportCreditDebit\">\r\n      <wsdl:input message=\"tns:DoExportCreditDebitSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DoExportCreditDebitSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"DoExportAccountStatement\">\r\n
+        \     <wsdl:input message=\"tns:DoExportAccountStatementSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:DoExportAccountStatementSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DoExportYourBalance\">\r\n      <wsdl:input message=\"tns:DoExportYourBalanceSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DoExportYourBalanceSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"CheckDealNoStatus\">\r\n
+        \     <wsdl:input message=\"tns:CheckDealNoStatusSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:CheckDealNoStatusSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"BuySellCurrency\">\r\n      <wsdl:input message=\"tns:BuySellCurrencySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:BuySellCurrencySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"CreatePayment\">\r\n      <wsdl:input message=\"tns:CreatePaymentSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:CreatePaymentSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"Get_Currencies\">\r\n      <wsdl:input message=\"tns:Get_CurrenciesSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:Get_CurrenciesSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"Get_Rate\">\r\n      <wsdl:input message=\"tns:Get_RateSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:Get_RateSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \ </wsdl:portType>\r\n  <wsdl:binding name=\"TradeServiceSoap\" type=\"tns:TradeServiceSoap\">\r\n
+        \   <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"DoSingleTrade\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoSingleTrade\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoMultileTrade\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoMultileTrade\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoTradeForPaymentUpload\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoTradeForPaymentUpload\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoTradeForPaymentUpload_XMLString\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoTradeForPaymentUpload_XMLString\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportYourPayment\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoExportYourPayment\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportCreditDebit\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoExportCreditDebit\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportAccountStatement\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoExportAccountStatement\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportYourBalance\">\r\n      <soap:operation soapAction=\"http://tempuri.org/DoExportYourBalance\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckDealNoStatus\">\r\n      <soap:operation soapAction=\"http://tempuri.org/CheckDealNoStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"BuySellCurrency\">\r\n      <soap:operation soapAction=\"http://tempuri.org/BuySellCurrency\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CreatePayment\">\r\n      <soap:operation soapAction=\"http://tempuri.org/CreatePayment\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Get_Currencies\">\r\n      <soap:operation soapAction=\"http://tempuri.org/Get_Currencies\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Get_Rate\">\r\n      <soap:operation soapAction=\"http://tempuri.org/Get_Rate\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"TradeServiceSoap12\" type=\"tns:TradeServiceSoap\">\r\n
+        \   <soap12:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"DoSingleTrade\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoSingleTrade\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoMultileTrade\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoMultileTrade\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoTradeForPaymentUpload\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoTradeForPaymentUpload\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoTradeForPaymentUpload_XMLString\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoTradeForPaymentUpload_XMLString\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportYourPayment\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoExportYourPayment\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportCreditDebit\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoExportCreditDebit\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportAccountStatement\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoExportAccountStatement\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DoExportYourBalance\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/DoExportYourBalance\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckDealNoStatus\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/CheckDealNoStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"BuySellCurrency\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/BuySellCurrency\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CreatePayment\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/CreatePayment\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Get_Currencies\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/Get_Currencies\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"Get_Rate\">\r\n      <soap12:operation soapAction=\"http://tempuri.org/Get_Rate\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"TradeService\">\r\n    <wsdl:port name=\"TradeServiceSoap\"
+        binding=\"tns:TradeServiceSoap\">\r\n      <soap:address location=\"https://portal-uat.globalreach-partners.com/TradeService.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"TradeServiceSoap12\" binding=\"tns:TradeServiceSoap12\">\r\n
+        \     <soap12:address location=\"https://portal-uat.globalreach-partners.com/TradeService.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Wed, 24 May 2017 12:24:34 GMT
+- request:
+    method: post
+    uri: https://portal-uat.globalreach-partners.com/TradeService.asmx
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://tempuri.org/"
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><DoSingleTrade
+        xmlns="http://tempuri.org/"><TradeType>booktrade</TradeType><Singletradeormultipletrade>single</Singletradeormultipletrade><DtOutput></DtOutput><objSingleTrade><BenName>Test1</BenName><PayeeAcIBAN>BE00000000000000</PayeeAcIBAN><PaymentCurr>EUR</PaymentCurr><PaymentAmount>12.0</PaymentAmount><PaymentType>Express</PaymentType><PaymentNotes>Test
+        API Payment</PaymentNotes><BankName>KBC Bank NV</BankName><BankAddress1>Address
+        1</BankAddress1><BankAddress2>Address 2</BankAddress2><BankCountry>Belgium</BankCountry><BankSwiftCode>KREXXXXB</BankSwiftCode><BankSortCode></BankSortCode><ValueDate>2017-05-24</ValueDate><TempValueDate>2017-05-24</TempValueDate><SellCurrency>USD</SellCurrency><OPICategories>PEN</OPICategories><BeneficiaryAdd1>add1</BeneficiaryAdd1><BeneficiaryAdd2>add2</BeneficiaryAdd2><BeneficiaryAdd3>add3</BeneficiaryAdd3></objSingleTrade><ClientLogin><GRP_CLIENT_CODE></ClientLogin><UserName><GRP_USERNAME></UserName><Password><GRP_PASSWORD></Password><GroupID>1</GroupID></DoSingleTrade></soap:Body></soap:Envelope>
+    headers:
+      Soapaction:
+      - '"http://tempuri.org/DoSingleTrade"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1274'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 24 May 2017 12:24:37 GMT
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '347'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - ASP.NET_SessionId=smpmplqoo2g4grbk1kwueauj; path=/; HttpOnly
+      - __cfduid=deed981132cc66df474c15939e4ae1b451495628674; expires=Thu, 24-May-18
+        12:24:34 GMT; path=/; domain=.globalreach-partners.com; HttpOnly
+      Cf-Rate-Limit-Rule-Id:
+      - ce780ac67477426eb0b7e2c1a2d7fdce
+      Cf-Rate-Limit-Action:
+      - simulate
+      Retry-After:
+      - '2007'
+      Cache-Control:
+      - private, max-age=0
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=31536000
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - cloudflare-nginx
+      Cf-Ray:
+      - 36403b9218e6232a-FRA
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><DoSingleTradeResponse
+        xmlns="http://tempuri.org/"><ErrorMsg>For FillDataRowFor TrimDataTableFor
+        AddValidColumns</ErrorMsg></DoSingleTradeResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Wed, 24 May 2017 12:24:37 GMT
+recorded_with: VCR 3.0.3
