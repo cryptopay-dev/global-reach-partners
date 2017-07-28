@@ -7,10 +7,46 @@ module GlobalReachPartners
       rate
     end
 
+    def get_rate_matrix
+      matrix = RateMatrix.new
+      matrix.fetch
+      matrix
+    end
+
+    def do_fx_trades(rate)
+      message = { trade_type: 'Single' }
+
+      buy_sell_currency = {
+        trade_type: 'Single',
+        settlement_date: Date.today.strftime('%d/%m/%Y'),
+        is_direct_debit: true,
+        buying_or_selling: 'Sell',
+        sell_currency: 'USD',
+        # sell_currency_country
+        buy_currency: 'EUR',
+        # buy_currency_country
+        amount: 100,
+        no_of_chaps: 1,
+        no_of_bacs: 0,
+        # bank_ID: 1,
+        # payment_sending
+        paymentcategory: 'BPEN',
+        FX_rate_matrix_guid: rate[:sell].guid
+        # trade_ref
+      }
+
+      message['objTradeParam'] = [
+        { 'clsBuySellCurrency' => buy_sell_currency }
+      ]
+
+      response = FxPluginRequest.new(:do_fx_trades).call(message)
+      Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
+    end
+
     def get_currencies
       message = { error_msg: '' }
 
-      request = Request.new(:get_currencies).call(message)
+      request = TradeServiceRequest.new(:get_currencies).call(message)
       currencies = request.body.dig(:get_currencies_response, :get_currencies_result, :diffgram, :new_data_set, :tbl)
       begin
         currencies.map do |currency|
@@ -83,12 +119,10 @@ module GlobalReachPartners
       # no_of_bacs: 10,
       # paymentcategory: 'BPEN'
 
-      Request.new(:do_single_trade).call(message)
+      TradeServiceRequest.new(:do_single_trade).call(message)
     end
 
-    private
-
-    def currency_id(currency)
+    private def currency_id(currency)
       if currency.is_a?(GlobalReachPartners::Currency)
         currency.id
       else
