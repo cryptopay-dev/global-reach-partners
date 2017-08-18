@@ -3,11 +3,10 @@ module GlobalReachPartners
     GRP = 1
     CFXPlus = 2
 
-    attr_reader :operation, :client, :configuration
+    attr_reader :operation, :configuration
 
     def initialize(operation)
       @operation = operation
-      @client = GlobalReachPartners.client
       @configuration = GlobalReachPartners.configuration
     end
 
@@ -20,13 +19,12 @@ module GlobalReachPartners
       end
     end
 
-    private def authentication
-      {
-        client_login: configuration.client_code,
-        user_name: configuration.username,
-        password: configuration.password,
-        group_ID: GRP
-      }
+    def client
+      raise NotImplementedError, 'You need to define method in subclass'
+    end
+
+    def authentication
+      raise NotImplementedError, 'You need to define method in subclass'
     end
   end
 end

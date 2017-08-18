@@ -6,14 +6,20 @@ require 'savon'
 require 'global_reach_partners/configuration'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
+require 'global_reach_partners/fx_plugin_request'
+require 'global_reach_partners/trade_service_request'
+require 'global_reach_partners/deal'
 require 'global_reach_partners/rate'
+require 'global_reach_partners/rate_matrix'
 require 'global_reach_partners/operations'
 
 module GlobalReachPartners
   extend Operations
 
   class << self
-    attr :configuration, :client
+    attr :configuration,
+      :fx_plugin_client,
+      :trade_service_client
 
     def configure
       @configuration ||= Configuration.new(
@@ -23,10 +29,20 @@ module GlobalReachPartners
       yield(@configuration)
     end
 
-    def client
-      return @client if @client
+    def fx_plugin_client
+      return @fx_plugin_client if @fx_plugin_client
 
-      wsdl_url = @configuration.url.sub(/(\?WSDL)?$/, '?WSDL')
+      @fx_plugin_client = client('/FXPlugin.asmx?WSDL')
+    end
+
+    def trade_service_client
+      return @trade_service_client if @trade_service_client
+
+      @trade_service_client = client('/TradeService.asmx?WSDL')
+    end
+
+    private def client(path)
+      wsdl_url = @configuration.url + path
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s
 
