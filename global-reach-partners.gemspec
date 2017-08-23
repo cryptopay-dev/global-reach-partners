@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'activesupport'
   s.add_dependency 'savon', '~> 2.11'
-  s.add_dependency 'nokogiri', '1.7.1'
+  s.add_dependency 'nokogiri', '~> 1.7'
 
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'rubocop'

@@ -1,13 +1,15 @@
 module GlobalReachPartners
   class RateMatrix
-    attr_reader :source
+    def initialize(result)
+      @result = result
+    end
 
-    def fetch
+    def self.fetch
       message = { error_msg: '' }
 
       request = FxPluginRequest.new(:get_rate_matrix).call(message)
-      fetch_result = request.body.dig(:get_rate_matrix_response, :get_rate_matrix_result)
-      @source = Nokogiri::XML(fetch_result).xpath('//FXRateMatrix')
+      result = request.body.dig(:get_rate_matrix_response, :get_rate_matrix_result)
+      new(result)
     end
 
     def ack!
@@ -21,13 +23,13 @@ module GlobalReachPartners
     end
 
     def guid
-      source.xpath('//GUID').first.text
+      source.at_xpath('//GUID').text
     end
 
     def get_rates(pair)
       rates = {}
 
-      @source.each do |fx|
+      source.each do |fx|
         next if fx.search("CcyPair[text()='#{pair}']").blank?
 
         if fx.search('BuyCcy').text == pair[0...3]
@@ -40,10 +42,12 @@ module GlobalReachPartners
       rates
     end
 
-    private def parse_source
-      @source.each do |fx|
-        Rate.new(rate_attributes(fx))
-      end
+    private def marshal_dump
+      @result
+    end
+
+    private def marshal_load(xml)
+      @result = xml
     end
 
     private def rate_attributes(fx)
@@ -53,6 +57,10 @@ module GlobalReachPartners
         sell_currency: fx.search('SellCcy').text,
         exchange_rate: fx.search('Rate').text.to_f
       }
+    end
+
+    private def source
+      @source ||= Nokogiri::XML(@result).xpath('//FXRateMatrix')
     end
   end
 end

@@ -8,9 +8,7 @@ module GlobalReachPartners
     end
 
     def get_rate_matrix
-      matrix = RateMatrix.new
-      matrix.fetch
-      matrix
+      RateMatrix.fetch
     end
 
     def do_fx_trades(rate)
