@@ -43,6 +43,7 @@ module GlobalReachPartners
 
     private def client(path)
       wsdl_url = @configuration.url + path
+      proxy_url = @configuration.proxy
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s
 
@@ -61,6 +62,8 @@ module GlobalReachPartners
         end
 
         wsdl(wsdl_url)
+        proxy(proxy_url) if proxy_url.present?
+
         namespace_identifier(nil)
         element_form_default(:unqualified)
         convert_request_keys_to(:camelcase)
