@@ -1,6 +1,6 @@
 module GlobalReachPartners
   class Configuration
-    attr_accessor :client_code, :username, :password, :url
+    attr_accessor :client_code, :username, :password, :url, :proxy
 
     # Default values
     attr_accessor :debug, :soap_version

@@ -29,6 +29,7 @@ GlobalReachPartners.configure do |config|
   config.client_code = 'TEST_XXX'
   config.username = 'USERNAME'
   config.password = 'PASSWORD'
+  config.proxy = 'https://proxy'
 end
 ```
 
