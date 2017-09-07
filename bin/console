@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'dotenv/load'
+require 'pry'
+require 'global-reach-partners'
+
+GlobalReachPartners.configure do |config|
+  config.client_code = ENV['GRP_CLIENT_CODE']
+  config.username = ENV['GRP_USERNAME']
+  config.password = ENV['GRP_PASSWORD']
+  config.url = ENV['GRP_URL']
+  config.proxy = ENV['GRP_PROXY']
+  config.debug = true
+end
+
+Pry.start
