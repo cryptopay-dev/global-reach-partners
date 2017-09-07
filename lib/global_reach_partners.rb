@@ -30,19 +30,30 @@ module GlobalReachPartners
     end
 
     def fx_plugin_client
-      return @fx_plugin_client if @fx_plugin_client
-
-      @fx_plugin_client = client('/FXPlugin.asmx?WSDL')
+      @fx_plugin_client ||= client(fx_plugin_wsdl)
     end
 
     def trade_service_client
-      return @trade_service_client if @trade_service_client
-
-      @trade_service_client = client('/TradeService.asmx?WSDL')
+      @trade_service_client ||= client(trade_service_wsdl)
     end
 
-    private def client(path)
-      wsdl_url = @configuration.url + path
+    private def fx_plugin_wsdl
+      if @configuration.fx_plugin_wsdl
+        @configuration.fx_plugin_wsdl
+      else
+        @configuration.url + '/FXPlugin.asmx?WSDL'
+      end
+    end
+
+    private def trade_service_wsdl
+      if @configuration.trade_service_wsdl
+        @configuration.trade_service_wsdl
+      else
+        @configuration.url + '/TradeService.asmx?WSDL'
+      end
+    end
+
+    private def client(wsdl_or_url)
       proxy_url = @configuration.proxy
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s
@@ -61,7 +72,7 @@ module GlobalReachPartners
           env_namespace(:soap)
         end
 
-        wsdl(wsdl_url)
+        wsdl(wsdl_or_url)
         proxy(proxy_url) if proxy_url.present?
 
         namespace_identifier(nil)

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'dotenv'
   gem 'awesome_print'
   gem 'fuubar'
   gem 'guard-rspec'
@@ -10,7 +11,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'dotenv'
   gem 'vcr'
   gem 'webmock'
 end
