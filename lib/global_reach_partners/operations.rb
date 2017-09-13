@@ -11,34 +11,35 @@ module GlobalReachPartners
       RateMatrix.fetch
     end
 
-    def do_fx_trades(rate)
-      message = { trade_type: 'Single' }
-
-      buy_sell_currency = {
-        trade_type: 'Single',
-        settlement_date: Date.today.strftime('%d/%m/%Y'),
-        is_direct_debit: true,
-        buying_or_selling: 'Sell',
-        sell_currency: 'USD',
-        # sell_currency_country
-        buy_currency: 'EUR',
-        # buy_currency_country
-        amount: 100,
-        no_of_chaps: 1,
-        no_of_bacs: 0,
-        # bank_ID: 1,
-        # payment_sending
-        paymentcategory: 'BPEN',
-        FX_rate_matrix_guid: rate[:sell].guid
-        # trade_ref
+    def do_fx_trades(guid:, amount:, buy_currency:, sell_currency:, buying:, ref: nil)
+      message = {
+        'TradeType' => 'Single',
+        'objTradeParam' => [
+          {
+            'clsBuySellCurrency' => {
+              'TradeType' => 'Single',
+              'SettlementDate' => Date.today.strftime('%d/%m/%Y'),
+              'IsDirectDebit' => false,
+              'BuyingOrSelling' => buying ? 'Buy' : 'Sell',
+              'BuyCurrency' => buy_currency,
+              'SellCurrency' => sell_currency,
+              'Amount' => amount,
+              'Paymentcategory' => 'BPEN',
+              'FXRateMatrixGuid' => guid,
+              'TradeRef' => ref
+            }
+          }
+        ]
       }
 
-      message['objTradeParam'] = [
-        { 'clsBuySellCurrency' => buy_sell_currency }
-      ]
+      logger.info("GlobalReachPartners.do_fx_trades start: #{message}")
 
       response = FxPluginRequest.new(:do_fx_trades).call(message)
-      Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
+      deal = Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
+
+      logger.info("GlobalReachPartners.do_fx_trades succeed: #{deal.raw}")
+
+      deal
     end
 
     def get_currencies

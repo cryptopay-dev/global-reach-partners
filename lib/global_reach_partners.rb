@@ -1,8 +1,11 @@
+require 'bigdecimal/util'
+
 require 'active_support/dependencies/autoload'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/core_ext/object'
 require 'savon'
 
+require 'global_reach_partners/errors'
 require 'global_reach_partners/configuration'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
@@ -20,6 +23,8 @@ module GlobalReachPartners
     attr :configuration,
       :fx_plugin_client,
       :trade_service_client
+
+    delegate :logger, to: :configuration
 
     def configure
       @configuration ||= Configuration.new(
@@ -57,6 +62,7 @@ module GlobalReachPartners
       proxy_url = @configuration.proxy
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s
+      configuration_logger = @configuration.logger
 
       @client = Savon.client do
         if use_debug
@@ -71,6 +77,8 @@ module GlobalReachPartners
         else
           env_namespace(:soap)
         end
+
+        logger(configuration_logger)
 
         wsdl(wsdl_or_url)
         proxy(proxy_url) if proxy_url.present?

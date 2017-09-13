@@ -2,6 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require 'dotenv/load'
 require 'bundler/setup'
+require 'pry-byebug'
 require 'webmock/rspec'
 require 'vcr'
 

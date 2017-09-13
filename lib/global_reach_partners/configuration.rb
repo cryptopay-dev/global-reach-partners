@@ -7,6 +7,7 @@ module GlobalReachPartners
     attr_accessor :url
     attr_accessor :trade_service_wsdl
     attr_accessor :fx_plugin_wsdl
+    attr_accessor :logger
 
     # Default values
     attr_accessor :debug
@@ -16,6 +17,10 @@ module GlobalReachPartners
       attrs.each do |key, value|
         public_send("#{key}=", value)
       end
+    end
+
+    def logger
+      @logger ||= Logger.new(debug ? STDOUT : File::NULL)
     end
   end
 end
