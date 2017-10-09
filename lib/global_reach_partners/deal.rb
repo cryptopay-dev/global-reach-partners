@@ -12,7 +12,7 @@ module GlobalReachPartners
       :raw
 
     def initialize(answer)
-      raise Error, answer[:error_message] if answer[:error_message]
+      check_for_error(answer)
 
       @raw = answer[:success_message]
       source = Nokogiri::XML(@raw).xpath('//Status')
@@ -32,6 +32,16 @@ module GlobalReachPartners
     end
 
     private
+
+    def check_for_error(answer)
+      title = answer[:error_message]
+      return unless title
+
+      description = answer.dig(:out_put_data_table, :diffgram, :document_element, :out_put_table, :error_message)&.strip
+      message = [title, description].compact.join(' ')
+
+      raise Error, message
+    end
 
     # 1,201.90 => BigDecimal.new('1201.90')
     def string_to_decimal(string)
