@@ -40,6 +40,9 @@ module GlobalReachPartners
       logger.info("GlobalReachPartners.do_fx_trades succeed: #{deal.raw}")
 
       deal
+    rescue Error => e
+      logger.error("GlobalReachPartners.do_fx_trades failed: #{e.message}, response: #{response}")
+      raise
     end
 
     def get_currencies
