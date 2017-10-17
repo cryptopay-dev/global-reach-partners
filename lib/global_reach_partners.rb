@@ -40,7 +40,9 @@ module GlobalReachPartners
       @trade_service_client ||= client(trade_service_wsdl)
     end
 
-    private def fx_plugin_wsdl
+    private
+
+    def fx_plugin_wsdl
       if @configuration.fx_plugin_wsdl
         @configuration.fx_plugin_wsdl
       else
@@ -48,7 +50,7 @@ module GlobalReachPartners
       end
     end
 
-    private def trade_service_wsdl
+    def trade_service_wsdl
       if @configuration.trade_service_wsdl
         @configuration.trade_service_wsdl
       else
@@ -56,7 +58,7 @@ module GlobalReachPartners
       end
     end
 
-    private def client(wsdl_or_url)
+    def client(wsdl_or_url)
       proxy_url = @configuration.proxy
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s

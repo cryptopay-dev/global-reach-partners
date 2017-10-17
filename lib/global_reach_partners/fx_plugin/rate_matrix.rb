@@ -43,15 +43,17 @@ module GlobalReachPartners
         rates
       end
 
-      private def marshal_dump
+      private
+
+      def marshal_dump
         @result
       end
 
-      private def marshal_load(xml)
+      def marshal_load(xml)
         @result = xml
       end
 
-      private def rate_attributes(fx)
+      def rate_attributes(fx)
         {
           guid: fx.search('GUID').text,
           buy_currency: fx.search('BuyCcy').text,
@@ -60,7 +62,7 @@ module GlobalReachPartners
         }
       end
 
-      private def source
+      def source
         @source ||= Nokogiri::XML(@result).xpath('//FXRateMatrix')
       end
     end

@@ -124,7 +124,9 @@ module GlobalReachPartners
       TradeServiceRequest.new(:do_single_trade).call(message)
     end
 
-    private def currency_id(currency)
+    private
+
+    def currency_id(currency)
       if currency.is_a?(GlobalReachPartners::Currency)
         currency.id
       else
