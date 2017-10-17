@@ -34,9 +34,9 @@ module GlobalReachPartners
           next if fx.search("CcyPair[text()='#{pair}']").blank?
 
           if fx.search('BuyCcy').text == pair[0...3]
-            rates[:buy] = Rate.new(rate_attributes(fx))
+            rates[:buy] = FxPlugin::Rate.new(rate_attributes(fx))
           else
-            rates[:sell] = Rate.new(rate_attributes(fx))
+            rates[:sell] = FxPlugin::Rate.new(rate_attributes(fx))
           end
         end
 
