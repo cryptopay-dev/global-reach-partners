@@ -17,6 +17,12 @@ require 'global_reach_partners/fx_plugin'
 module GlobalReachPartners
   extend Operations
 
+  LOG_FILTERS = %w[
+    ClientCode
+    Username
+    Password
+  ].freeze
+
   class << self
     attr :configuration,
       :fx_plugin_client,
@@ -79,6 +85,7 @@ module GlobalReachPartners
         end
 
         logger(configuration_logger)
+        filters(LOG_FILTERS)
 
         wsdl(wsdl_or_url)
         proxy(proxy_url) if proxy_url.present?
