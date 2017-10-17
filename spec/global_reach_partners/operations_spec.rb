@@ -68,7 +68,7 @@ RSpec.describe GlobalReachPartners::Operations do
           ref: 'whatever'
         )
 
-        expect(deal).to be_kind_of(GlobalReachPartners::Deal)
+        expect(deal).to be_kind_of(GlobalReachPartners::FxPlugin::Deal)
         expect(deal.deal_number).to be
         expect(deal.settlement_date).to be_a Date
         expect(deal.buy_currency).to eq 'EUR'

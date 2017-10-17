@@ -35,7 +35,7 @@ module GlobalReachPartners
       logger.info("GlobalReachPartners.do_fx_trades start: #{message}")
 
       response = FxPlugin::Request.new(:do_fx_trades).call(message)
-      deal = Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
+      deal = FxPlugin::Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
 
       logger.info("GlobalReachPartners.do_fx_trades succeed: #{deal.raw}")
 
