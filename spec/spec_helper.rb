@@ -44,6 +44,7 @@ RSpec.configure do |config|
       config.username = ENV['GRP_USERNAME']
       config.password = ENV['GRP_PASSWORD']
       config.debug = ENV['GRP_DEBUG'] == 'true'
+      config.proxy = ENV['GRP_PROXY']
     end
   end
 end

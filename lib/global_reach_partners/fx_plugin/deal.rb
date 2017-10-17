@@ -12,37 +12,24 @@ module GlobalReachPartners
       attr_reader :trade_ref
       attr_reader :raw
 
-      def initialize(answer)
-        check_for_error(answer)
+      def initialize(source)
+        @deal_number = source.search('DealNo').text
+        @settlement_date = Date.parse(source.search('SettelementDate').text)
 
-        @raw = answer[:success_message]
-        source = Nokogiri::XML(@raw).xpath('//Status')
+        @buy_currency = source.search('BuyCurrency').text
+        @buy_amount = string_to_decimal(source.search('BuyAmount').text)
 
-        @deal_number = source.search('//DealNo').text
-        @settlement_date = Date.parse(source.search('//SettelementDate').text)
+        @sell_currency = source.search('SellCurrency').text
+        @sell_amount = string_to_decimal(source.search('SellAmount').text)
 
-        @buy_currency = source.search('//BuyCurrency').text
-        @buy_amount = string_to_decimal(source.search('//BuyAmount').text)
+        @exchange_rate = string_to_decimal(source.search('ExchangeRate').text)
+        @trade_direction = source.search('TradeDirection').text
+        @trade_ref = source.search('TradeRef').text
 
-        @sell_currency = source.search('//SellCurrency').text
-        @sell_amount = string_to_decimal(source.search('//SellAmount').text)
-
-        @exchange_rate = string_to_decimal(source.search('//ExchangeRate').text)
-        @trade_direction = source.search('//TradeDirection').text
-        @trade_ref = source.search('//TradeRef').text
+        @raw = source.to_xml
       end
 
       private
-
-      def check_for_error(answer)
-        title = answer[:error_message]
-        return unless title
-
-        description = answer.dig(:out_put_data_table, :diffgram, :document_element, :out_put_table, :error_message)&.strip
-        message = [title, description].compact.join(' ')
-
-        raise Error, message
-      end
 
       # 1,201.90 => BigDecimal.new('1201.90')
       def string_to_decimal(string)

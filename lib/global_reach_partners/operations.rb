@@ -11,8 +11,8 @@ module GlobalReachPartners
       FxPlugin::Operations::GetRateMatrix.call
     end
 
-    def do_fx_trades(**args)
-      FxPlugin::Operations::DoFxTrades.call(**args)
+    def do_fx_trades(*args)
+      FxPlugin::Operations::DoFxTrades.call(*args)
     end
 
     def get_currencies
