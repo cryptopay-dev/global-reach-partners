@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe GlobalReachPartners::FxPluginRequest do
+RSpec.describe GlobalReachPartners::FxPlugin::Request do
   let(:operation) { :operation }
   subject { described_class.new(operation) }
 

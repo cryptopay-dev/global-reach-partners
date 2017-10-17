@@ -9,15 +9,19 @@ require 'global_reach_partners/errors'
 require 'global_reach_partners/configuration'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
-require 'global_reach_partners/fx_plugin_request'
 require 'global_reach_partners/trade_service_request'
-require 'global_reach_partners/deal'
 require 'global_reach_partners/rate'
-require 'global_reach_partners/rate_matrix'
 require 'global_reach_partners/operations'
+require 'global_reach_partners/fx_plugin'
 
 module GlobalReachPartners
   extend Operations
+
+  LOG_FILTERS = %w[
+    ClientCode
+    Username
+    Password
+  ].freeze
 
   class << self
     attr :configuration,
@@ -42,7 +46,9 @@ module GlobalReachPartners
       @trade_service_client ||= client(trade_service_wsdl)
     end
 
-    private def fx_plugin_wsdl
+    private
+
+    def fx_plugin_wsdl
       if @configuration.fx_plugin_wsdl
         @configuration.fx_plugin_wsdl
       else
@@ -50,7 +56,7 @@ module GlobalReachPartners
       end
     end
 
-    private def trade_service_wsdl
+    def trade_service_wsdl
       if @configuration.trade_service_wsdl
         @configuration.trade_service_wsdl
       else
@@ -58,7 +64,7 @@ module GlobalReachPartners
       end
     end
 
-    private def client(wsdl_or_url)
+    def client(wsdl_or_url)
       proxy_url = @configuration.proxy
       use_debug = @configuration.debug
       soap_version = @configuration.soap_version.to_s
@@ -79,6 +85,7 @@ module GlobalReachPartners
         end
 
         logger(configuration_logger)
+        filters(LOG_FILTERS)
 
         wsdl(wsdl_or_url)
         proxy(proxy_url) if proxy_url.present?

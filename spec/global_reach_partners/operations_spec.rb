@@ -49,52 +49,139 @@ RSpec.describe GlobalReachPartners::Operations do
     it 'returns rate matrix', vcr: { cassette_name: 'operations/get_rate_matrix' } do
       result = subject.get_rate_matrix
 
-      expect(result).to be_kind_of(GlobalReachPartners::RateMatrix)
+      expect(result).to be_kind_of(GlobalReachPartners::FxPlugin::RateMatrix)
     end
   end
 
   describe '.do_fx_trades' do
-    context 'success' do
-      it 'creates fx trade', vcr: { cassette_name: 'operations/do_fx_trades_success' } do
-        rate_matrix = subject.get_rate_matrix
-        rate_matrix.ack!
+    context 'single trade' do
+      context 'success' do
+        it 'creates fx trade', vcr: { cassette_name: 'operations/do_fx_trades_single_success' } do
+          rate_matrix = subject.get_rate_matrix
+          rate_matrix.ack!
 
-        deal = subject.do_fx_trades(
-          guid: rate_matrix.guid,
-          amount: 1234.5,
-          buy_currency: 'EUR',
-          sell_currency: 'USD',
-          buying: true,
-          ref: 'whatever'
-        )
+          deals = subject.do_fx_trades(
+            guid: rate_matrix.guid,
+            amount: 123.4,
+            buy_currency: 'EUR',
+            sell_currency: 'USD',
+            buying: true,
+            ref: 'whatever'
+          )
 
-        expect(deal).to be_kind_of(GlobalReachPartners::Deal)
-        expect(deal.deal_number).to be
-        expect(deal.settlement_date).to be_a Date
-        expect(deal.buy_currency).to eq 'EUR'
-        expect(deal.buy_amount).to eq '1234.5'.to_d
-        expect(deal.sell_currency).to eq 'USD'
-        expect(deal.sell_amount).to be_a BigDecimal
-        expect(deal.exchange_rate).to be_a BigDecimal
-        expect(deal.trade_direction).to eq 'Buy'
-        expect(deal.trade_ref).to eq 'whatever'
+          expect(deals.count).to eq 1
+
+          deal = deals.first
+          expect(deal).to be_kind_of(GlobalReachPartners::FxPlugin::Deal)
+          expect(deal.deal_number).to be
+          expect(deal.settlement_date).to be_a Date
+          expect(deal.buy_currency).to eq 'EUR'
+          expect(deal.buy_amount).to eq '123.4'.to_d
+          expect(deal.sell_currency).to eq 'USD'
+          expect(deal.sell_amount).to be_a BigDecimal
+          expect(deal.exchange_rate).to be_a BigDecimal
+          expect(deal.trade_direction).to eq 'Buy'
+          expect(deal.trade_ref).to eq 'whatever'
+        end
+      end
+
+      context 'failure' do
+        it 'raises error', vcr: { cassette_name: 'operations/do_fx_trades_single_failure' } do
+          rate_matrix = subject.get_rate_matrix
+          rate_matrix.ack!
+
+          expect {
+            subject.do_fx_trades(
+              guid: rate_matrix.guid,
+              amount: 0,
+              buy_currency: 'EUR',
+              sell_currency: 'USD',
+              buying: true
+            )
+          }.to raise_error GlobalReachPartners::Error
+        end
       end
     end
 
-    context 'failure' do
-      it 'raises error', vcr: { cassette_name: 'operations/do_fx_trades_failure' } do
-        rate_matrix = subject.get_rate_matrix
-        rate_matrix.ack!
+    context 'multiple trades' do
+      context 'success' do
+        it 'creates fx trades', vcr: { cassette_name: 'operations/do_fx_trades_multi_success' } do
+          rate_matrix = subject.get_rate_matrix
+          rate_matrix.ack!
 
-        expect {
-          subject.do_fx_trades(
-            guid: rate_matrix.guid,
-            amount: 0,
-            buy_currency: 'EUR',
-            sell_currency: 'USD',
-            buying: true
-          )
-        }.to raise_error GlobalReachPartners::Error
+          deals = subject.do_fx_trades([
+            {
+              guid: rate_matrix.guid,
+              amount: 123.4,
+              buy_currency: 'EUR',
+              sell_currency: 'USD',
+              buying: true,
+              ref: 'whatever'
+            },
+            {
+              guid: rate_matrix.guid,
+              amount: 12.3,
+              buy_currency: 'EUR',
+              sell_currency: 'USD',
+              buying: false,
+              ref: 'whatever'
+            }
+          ])
+
+          expect(deals.count).to eq 2
+
+          deal = deals.first
+          expect(deal).to be_kind_of(GlobalReachPartners::FxPlugin::Deal)
+          expect(deal.deal_number).to be
+          expect(deal.settlement_date).to be_a Date
+          expect(deal.buy_currency).to eq 'EUR'
+          expect(deal.buy_amount).to eq '123.4'.to_d
+          expect(deal.sell_currency).to eq 'USD'
+          expect(deal.sell_amount).to be_a BigDecimal
+          expect(deal.exchange_rate).to be_a BigDecimal
+          expect(deal.trade_direction).to eq 'Buy'
+          expect(deal.trade_ref).to eq 'whatever'
+
+          deal = deals.last
+          expect(deal).to be_kind_of(GlobalReachPartners::FxPlugin::Deal)
+          expect(deal.deal_number).to be
+          expect(deal.settlement_date).to be_a Date
+          expect(deal.buy_currency).to eq 'EUR'
+          expect(deal.sell_amount).to eq '12.3'.to_d
+          expect(deal.sell_currency).to eq 'USD'
+          expect(deal.sell_amount).to be_a BigDecimal
+          expect(deal.exchange_rate).to be_a BigDecimal
+          expect(deal.trade_direction).to eq 'Sell'
+          expect(deal.trade_ref).to eq 'whatever'
+        end
+      end
+
+      context 'failure' do
+        it 'raises error', vcr: { cassette_name: 'operations/do_fx_trades_multi_failure' } do
+          rate_matrix = subject.get_rate_matrix
+          rate_matrix.ack!
+
+          expect {
+            subject.do_fx_trades([
+              {
+                guid: rate_matrix.guid,
+                amount: 0,
+                buy_currency: 'EUR',
+                sell_currency: 'USD',
+                buying: true,
+                ref: 'whatever'
+              },
+              {
+                guid: rate_matrix.guid,
+                amount: 0,
+                buy_currency: 'EUR',
+                sell_currency: 'USD',
+                buying: false,
+                ref: 'whatever'
+              }
+            ])
+          }.to raise_error GlobalReachPartners::Error
+        end
       end
     end
   end

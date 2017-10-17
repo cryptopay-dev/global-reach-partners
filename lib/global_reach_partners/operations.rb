@@ -8,41 +8,11 @@ module GlobalReachPartners
     end
 
     def get_rate_matrix
-      RateMatrix.fetch
+      FxPlugin::Operations::GetRateMatrix.call
     end
 
-    def do_fx_trades(guid:, amount:, buy_currency:, sell_currency:, buying:, ref: nil)
-      message = {
-        'TradeType' => 'Single',
-        'objTradeParam' => [
-          {
-            'clsBuySellCurrency' => {
-              'TradeType' => 'Single',
-              'SettlementDate' => Date.today.strftime('%d/%m/%Y'),
-              'IsDirectDebit' => false,
-              'BuyingOrSelling' => buying ? 'Buy' : 'Sell',
-              'BuyCurrency' => buy_currency,
-              'SellCurrency' => sell_currency,
-              'Amount' => amount,
-              'Paymentcategory' => 'BPEN',
-              'FXRateMatrixGuid' => guid,
-              'TradeRef' => ref
-            }
-          }
-        ]
-      }
-
-      logger.info("GlobalReachPartners.do_fx_trades start: #{message}")
-
-      response = FxPluginRequest.new(:do_fx_trades).call(message)
-      deal = Deal.new(response.body.dig(:do_fx_trades_response, :do_fx_trades_result))
-
-      logger.info("GlobalReachPartners.do_fx_trades succeed: #{deal.raw}")
-
-      deal
-    rescue Error => e
-      logger.error("GlobalReachPartners.do_fx_trades failed: #{e.message}, response: #{response}")
-      raise
+    def do_fx_trades(*args)
+      FxPlugin::Operations::DoFxTrades.call(*args)
     end
 
     def get_currencies
@@ -124,7 +94,9 @@ module GlobalReachPartners
       TradeServiceRequest.new(:do_single_trade).call(message)
     end
 
-    private def currency_id(currency)
+    private
+
+    def currency_id(currency)
       if currency.is_a?(GlobalReachPartners::Currency)
         currency.id
       else
