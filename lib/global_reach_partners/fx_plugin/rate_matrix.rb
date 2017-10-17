@@ -5,22 +5,8 @@ module GlobalReachPartners
         @result = result
       end
 
-      def self.fetch
-        message = { error_msg: '' }
-
-        request = FxPlugin::Request.new(:get_rate_matrix).call(message)
-        result = request.body.dig(:get_rate_matrix_response, :get_rate_matrix_result)
-        new(result)
-      end
-
       def ack!
-        message = {
-          error_msg: '',
-          guid: guid
-        }
-
-        response = FxPlugin::Request.new(:set_ack).call(message)
-        response.body.dig(:set_ack_response, :error_msg) == 'ForValidation'
+        Operations::SetAck.call(guid)
       end
 
       def guid
@@ -34,9 +20,9 @@ module GlobalReachPartners
           next if fx.search("CcyPair[text()='#{pair}']").blank?
 
           if fx.search('BuyCcy').text == pair[0...3]
-            rates[:buy] = FxPlugin::Rate.new(rate_attributes(fx))
+            rates[:buy] = Rate.new(rate_attributes(fx))
           else
-            rates[:sell] = FxPlugin::Rate.new(rate_attributes(fx))
+            rates[:sell] = Rate.new(rate_attributes(fx))
           end
         end
 

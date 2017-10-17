@@ -1,13 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe GlobalReachPartners::FxPlugin::RateMatrix do
-  subject(:matrix) { described_class.fetch }
+  subject(:matrix) { GlobalReachPartners::FxPlugin::Operations::GetRateMatrix.call }
 
-  describe '.fetch' do
-    it 'returns filled matrix', vcr: { cassette_name: 'fx_plugin/rate_matrix/fetch' } do
-      matrix = described_class.fetch
-
-      expect(matrix).to be_a described_class
+  describe '#guid' do
+    it 'returns guid', vcr: { cassette_name: 'fx_plugin/rate_matrix/guid' } do
       expect(matrix.guid).to be
     end
   end
