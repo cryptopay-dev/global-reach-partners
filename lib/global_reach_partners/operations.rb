@@ -8,7 +8,7 @@ module GlobalReachPartners
     end
 
     def get_rate_matrix
-      RateMatrix.fetch
+      FxPlugin::RateMatrix.fetch
     end
 
     def do_fx_trades(guid:, amount:, buy_currency:, sell_currency:, buying:, ref: nil)

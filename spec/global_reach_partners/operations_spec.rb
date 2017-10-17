@@ -49,7 +49,7 @@ RSpec.describe GlobalReachPartners::Operations do
     it 'returns rate matrix', vcr: { cassette_name: 'operations/get_rate_matrix' } do
       result = subject.get_rate_matrix
 
-      expect(result).to be_kind_of(GlobalReachPartners::RateMatrix)
+      expect(result).to be_kind_of(GlobalReachPartners::FxPlugin::RateMatrix)
     end
   end
 
