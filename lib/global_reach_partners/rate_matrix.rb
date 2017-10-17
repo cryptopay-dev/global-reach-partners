@@ -7,7 +7,7 @@ module GlobalReachPartners
     def self.fetch
       message = { error_msg: '' }
 
-      request = FxPluginRequest.new(:get_rate_matrix).call(message)
+      request = FxPlugin::Request.new(:get_rate_matrix).call(message)
       result = request.body.dig(:get_rate_matrix_response, :get_rate_matrix_result)
       new(result)
     end
@@ -18,7 +18,7 @@ module GlobalReachPartners
         guid: guid
       }
 
-      response = FxPluginRequest.new(:set_ack).call(message)
+      response = FxPlugin::Request.new(:set_ack).call(message)
       response.body.dig(:set_ack_response, :error_msg) == 'ForValidation'
     end
 

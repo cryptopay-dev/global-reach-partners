@@ -9,12 +9,12 @@ require 'global_reach_partners/errors'
 require 'global_reach_partners/configuration'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
-require 'global_reach_partners/fx_plugin_request'
 require 'global_reach_partners/trade_service_request'
 require 'global_reach_partners/deal'
 require 'global_reach_partners/rate'
 require 'global_reach_partners/rate_matrix'
 require 'global_reach_partners/operations'
+require 'global_reach_partners/fx_plugin'
 
 module GlobalReachPartners
   extend Operations
