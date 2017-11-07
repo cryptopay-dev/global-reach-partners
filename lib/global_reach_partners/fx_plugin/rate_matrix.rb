@@ -10,7 +10,7 @@ module GlobalReachPartners
       end
 
       def guid
-        source.at_xpath('//GUID').text
+        source.at_xpath('GUID').text
       end
 
       def get_rates(pair)
