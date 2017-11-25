@@ -47,6 +47,8 @@ module GlobalReachPartners
     end
 
     def closest_workday(date = Date.today)
+      date = date + 1.day
+
       if date.saturday?
         date + 2.days
       elsif date.sunday?
