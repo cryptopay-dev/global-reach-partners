@@ -46,6 +46,16 @@ module GlobalReachPartners
       @trade_service_client ||= client(trade_service_wsdl)
     end
 
+    def closest_workday(date = Date.today)
+      if date.saturday?
+        date + 2.days
+      elsif date.sunday?
+        date + 1.day
+      else
+        date
+      end
+    end
+
     private
 
     def fx_plugin_wsdl
