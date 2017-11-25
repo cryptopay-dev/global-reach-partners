@@ -33,7 +33,7 @@ module GlobalReachPartners
 
         def build_buy_sell(guid:, amount:, buy_currency:, sell_currency:, buying:, ref: nil)
           {
-            'SettlementDate' => Date.today.strftime('%d/%m/%Y'),
+            'SettlementDate' => GlobalReachPartners.closest_workday.strftime('%d/%m/%Y'),
             'IsDirectDebit' => false,
             'BuyingOrSelling' => buying ? 'Buy' : 'Sell',
             'BuyCurrency' => buy_currency,
