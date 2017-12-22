@@ -7,6 +7,7 @@ require 'savon'
 
 require 'global_reach_partners/errors'
 require 'global_reach_partners/configuration'
+require 'global_reach_partners/calendar'
 require 'global_reach_partners/currency'
 require 'global_reach_partners/request'
 require 'global_reach_partners/trade_service_request'
@@ -47,15 +48,7 @@ module GlobalReachPartners
     end
 
     def closest_workday(date = Date.today)
-      date = date + 1.day
-
-      if date.saturday?
-        date + 2.days
-      elsif date.sunday?
-        date + 1.day
-      else
-        date
-      end
+      Calendar.closest_workday(date)
     end
 
     private
