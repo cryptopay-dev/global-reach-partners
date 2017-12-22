@@ -1,0 +1,24 @@
+20171225    Mon    Christmas
+20171226    Tue    Boxing Day
+20180101    Mon    New Year's Day
+20180330    Fri    Good Friday
+20180402    Mon    Easter Monday
+20180507    Mon    Early May Bank Holiday
+20180528    Mon    Late May Bank Holiday
+20180827    Mon    Summer Bank Holiday
+20181225    Tue    Christmas
+20181226    Wed    Boxing Day
+20190101    Tue    New Year's Day
+20190419    Fri    Good Friday
+20190422    Mon    Easter Monday
+20190506    Mon    Early May Bank Holiday
+20190527    Mon    Late May Bank Holiday
+20190826    Mon    Summer Bank Holiday
+20191225    Wed    Christmas
+20191226    Thu    Boxing Day
+20200101    Wed    New Year's Day
+20200410    Fri    Good Friday
+20200413    Mon    Easter Monday
+20200504    Mon    Early May Bank Holiday
+20200525    Mon    Late May Bank Holiday
+20200831    Mon    Summer Bank Holiday
