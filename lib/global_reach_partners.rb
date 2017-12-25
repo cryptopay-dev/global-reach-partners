@@ -39,8 +39,9 @@ module GlobalReachPartners
       yield(@configuration)
     end
 
-    def fx_plugin_client
-      @fx_plugin_client ||= client(fx_plugin_wsdl)
+    def fx_plugin_client(options = {})
+      @fx_plugin_clients ||= {}
+      @fx_plugin_clients[options] ||= client(fx_plugin_wsdl, options)
     end
 
     def trade_service_client
@@ -69,36 +70,33 @@ module GlobalReachPartners
       end
     end
 
-    def client(wsdl_or_url)
-      proxy_url = @configuration.proxy
-      use_debug = @configuration.debug
-      soap_version = @configuration.soap_version.to_s
-      configuration_logger = @configuration.logger
+    def client(wsdl_or_url, read_timeout: nil)
+      config = {
+        logger: @configuration.logger,
+        filters: LOG_FILTERS,
+        wsdl: wsdl_or_url,
+        proxy: @configuration.proxy.presence,
+        namespace_identifier: nil,
+        element_form_default: :unqualified,
+        convert_request_keys_to: :camelcase
+      }
 
-      @client = Savon.client do
-        if use_debug
-          log_level(:debug)
-          log(true)
-          pretty_print_xml(true)
-        end
-
-        if soap_version.to_s == '1.2'
-          soap_version(2)
-          env_namespace(:soap12)
-        else
-          env_namespace(:soap)
-        end
-
-        logger(configuration_logger)
-        filters(LOG_FILTERS)
-
-        wsdl(wsdl_or_url)
-        proxy(proxy_url) if proxy_url.present?
-
-        namespace_identifier(nil)
-        element_form_default(:unqualified)
-        convert_request_keys_to(:camelcase)
+      if @configuration.debug
+        config[:log_level] = :debug
+        config[:log] = true
+        config[:pretty_print_xml] = true
       end
+
+      if @configuration.soap_version.to_s == '1.2'
+        config[:soap_version] = 2
+        config[:env_namespace] = :soap12
+      else
+        config[:env_namespace] = :soap
+      end
+
+      config[:read_timeout] = read_timeout if read_timeout
+
+      Savon.client(config)
     end
   end
 end
