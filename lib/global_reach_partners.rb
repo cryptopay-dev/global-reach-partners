@@ -75,11 +75,12 @@ module GlobalReachPartners
         logger: @configuration.logger,
         filters: LOG_FILTERS,
         wsdl: wsdl_or_url,
-        proxy: @configuration.proxy.presence,
         namespace_identifier: nil,
         element_form_default: :unqualified,
         convert_request_keys_to: :camelcase
       }
+
+      config[:proxy] = @configuration.proxy if @configuration.proxy.present?
 
       if @configuration.debug
         config[:log_level] = :debug
