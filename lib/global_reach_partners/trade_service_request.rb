@@ -1,6 +1,6 @@
 module GlobalReachPartners
   class TradeServiceRequest < Request
-    def client
+    def client(*)
       GlobalReachPartners.trade_service_client
     end
 

@@ -6,7 +6,7 @@ module GlobalReachPartners
 
         delegate :logger, to: GlobalReachPartners
 
-        def call(trades)
+        def call(trades, read_timeout: nil)
           buy_sells = Array.wrap(trades).map { |trade| build_buy_sell(trade) }
 
           message = {
@@ -18,7 +18,7 @@ module GlobalReachPartners
 
           logger.info("GlobalReachPartners.do_fx_trades start: #{message}")
 
-          response = Request.new(:do_fx_trades).call(message)
+          response = Request.new(:do_fx_trades).call(message, read_timeout: read_timeout)
           result = response.body.dig(:do_fx_trades_response, :do_fx_trades_result)
 
           parse_deals(result).tap do |deals|

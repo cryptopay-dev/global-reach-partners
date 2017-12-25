@@ -1,8 +1,8 @@
 module GlobalReachPartners
   module FxPlugin
     class Request < GlobalReachPartners::Request
-      def client
-        GlobalReachPartners.fx_plugin_client
+      def client(options = {})
+        GlobalReachPartners.fx_plugin_client(options)
       end
 
       def authentication

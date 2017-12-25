@@ -10,10 +10,10 @@ module GlobalReachPartners
       @configuration = GlobalReachPartners.configuration
     end
 
-    def call(operation_message)
+    def call(operation_message, options = {})
       full_message = operation_message.merge(authentication)
 
-      client.call(operation) do
+      client(options).call(operation) do
         attributes(xmlns: 'http://tempuri.org/')
         message(full_message)
       end
