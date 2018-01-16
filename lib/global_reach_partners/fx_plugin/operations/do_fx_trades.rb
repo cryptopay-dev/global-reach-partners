@@ -32,8 +32,10 @@ module GlobalReachPartners
         private
 
         def build_buy_sell(guid:, amount:, buy_currency:, sell_currency:, buying:, ref: nil)
+          settlement_date = GlobalReachPartners.closest_workday(currencies: [buy_currency, sell_currency])
+
           {
-            'SettlementDate' => GlobalReachPartners.closest_workday.strftime('%d/%m/%Y'),
+            'SettlementDate' => settlement_date.strftime('%d/%m/%Y'),
             'IsDirectDebit' => false,
             'BuyingOrSelling' => buying ? 'Buy' : 'Sell',
             'BuyCurrency' => buy_currency,

@@ -48,8 +48,8 @@ module GlobalReachPartners
       @trade_service_client ||= client(trade_service_wsdl)
     end
 
-    def closest_workday(date = Date.today)
-      Calendar.closest_workday(date)
+    def closest_workday(date: Date.today, currencies: [])
+      Calendar.closest_workday(date, currencies)
     end
 
     private

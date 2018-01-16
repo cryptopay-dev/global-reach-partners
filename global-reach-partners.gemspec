@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = ''
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md', 'holidays.txt']
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md', 'holidays.csv']
 
   s.add_dependency 'activesupport'
   s.add_dependency 'savon', '~> 2.11'
