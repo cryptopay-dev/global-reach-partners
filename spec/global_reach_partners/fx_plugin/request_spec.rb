@@ -16,4 +16,12 @@ RSpec.describe GlobalReachPartners::FxPlugin::Request do
       expect(subject.client).to be_kind_of(Savon::Client)
     end
   end
+
+  describe 'invalid credentials' do
+    let(:operation) { :get_rate_matrix }
+
+    it 'raises errors', vcr: { cassette_name: 'fx_plugin/invalid_credentials' } do
+      expect { subject.call({ error_msg: '' }) }.to raise_error(GlobalReachPartners::Error, 'Credential Failed.')
+    end
+  end
 end

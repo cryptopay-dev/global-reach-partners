@@ -13,9 +13,14 @@ module GlobalReachPartners
     def call(operation_message, options = {})
       full_message = operation_message.merge(authentication)
 
-      client(options).call(operation) do
+      request = client(options).call(operation) do
         attributes(xmlns: 'http://tempuri.org/')
         message(full_message)
+      end
+
+      request.tap do |r|
+        error_msg = r.body.dig(:get_rate_matrix_response, :error_msg)
+        raise Error, error_msg if error_msg
       end
     end
 
